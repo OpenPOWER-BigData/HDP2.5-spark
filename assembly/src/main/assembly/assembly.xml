@@ -1,0 +1,157 @@
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one or more
+  ~ contributor license agreements.  See the NOTICE file distributed with
+  ~ this work for additional information regarding copyright ownership.
+  ~ The ASF licenses this file to You under the Apache License, Version 2.0
+  ~ (the "License"); you may not use this file except in compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<assembly>
+  <id>dist</id>
+  <formats>
+    <format>tar.gz</format>
+    <format>dir</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+
+  <fileSets>
+    <fileSet>
+      <includes>
+        <include>README</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/
+      </directory>
+      <outputDirectory></outputDirectory>
+      <includes>
+        <include>LICENSE</include>
+        <include>NOTICE</include>
+        <include>README.md</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/sbin/
+      </directory>
+      <outputDirectory>sbin</outputDirectory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/python/
+      </directory>
+        <outputDirectory>/python</outputDirectory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/bin/
+      </directory>
+      <outputDirectory>bin</outputDirectory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/assembly/target/${spark.jar.dir}
+      </directory>
+      <outputDirectory>/lib</outputDirectory>
+      <includes>
+        <include>${spark.jar.basename}</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/examples/src/main
+      </directory>
+      <outputDirectory>/examples/src/main</outputDirectory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/ec2
+      </directory>
+      <outputDirectory>/ec2</outputDirectory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/data
+      </directory>
+      <outputDirectory>/data</outputDirectory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/conf
+      </directory>
+      <outputDirectory>/conf</outputDirectory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/examples/target/${spark.jar.dir}/
+      </directory>
+      <outputDirectory>/lib</outputDirectory>
+      <includes>
+        <include>spark-examples-*.jar</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/network/yarn/target/${spark.jar.dir}/
+      </directory>
+      <outputDirectory>/lib</outputDirectory>
+      <includes>
+        <include>spark-${project.version}-yarn-shuffle.jar</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/yarn-timeline/yarn-timeline-ats-plugin/target/
+      </directory>
+      <outputDirectory>/hdpLib</outputDirectory>
+      <includes>
+        <include>spark-yarn-timeline-ats-plugin*${project.version}.jar</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/lib_managed/jars
+      </directory>
+      <outputDirectory>/lib</outputDirectory>
+      <includes>
+        <include>datanucleus*.jar</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>
+        ${project.parent.basedir}/R/lib
+      </directory>
+      <outputDirectory>/R/lib</outputDirectory>
+    </fileSet>
+   </fileSets>
+</assembly>

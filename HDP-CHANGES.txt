@@ -1,0 +1,84 @@
+Changes only in Hortonworks github and not in Apache SPARK-1.6.2 and hence not covered by CHANGES.txt.
+
+INCOMPATIBLE CHANGES
+
+NEW FEATURES
+
+IMPROVEMENTS
+  BUG-58572.   spark-llap: validate security scenarios
+  BUG-54962.   (SPARK-14113) Consider marking JobConf closure-cleaning in HadoopRDD as optional.
+  SPARK-14091  Consider improving performance of SparkContext.getCallSite().
+  SPARK-12948  OrcRelation uses HadoopRDD which can broadcast conf objects frequently.
+  SPARK-12920  Fix high CPU usage in Spark thrift server with concurrent users.
+  SPARK-12998  Enable OrcRelation even when connecting via spark thrift server.
+  BUG-51300.   (SPARK-12925) Improve HiveInspectors.unwrap for StringObjectInspector.getPrimitiveWritableObject
+  BUG-51395.   (SPARK-12417) support to have ORC bloom filters during write code path
+  BUG-51301.   (SPARK-12898) Consider having dummyCallSite for HiveTableScan
+  RMP-5184.    Upload spark assembly jar to HDFS
+  RMP-6165.    Provide user specific access control to SparkSQL
+  BUG-50102.   sparkr.zip is missing in the spark distribution
+  Revert SPARK-2960 because it do the same as BUG-30990 but may still not work for HDP
+  also revert SPARK-11218 which is dependent on SPARK-2960
+  BUG-48982.   Add hadoop lzo jar to the classpath
+  BUG-47650.   Spark streaming is not using internal kafka build
+  BUG-47901.   fix scalastyle check
+  BUG-47814.   ported ConfigCheck
+  BUG-30990.   Resolving symlinks in bin/spark-* scripts
+  HOTFIX-31    adding R to assembly descriptor, copying to /R/lib/SparkR
+  HOTFIX-25    disable mqtt assembly builds unless -Pmqtt-assembly set
+  SPARK-11314  Add service API and test service for Yarn Cluster schedulers
+  SPARK-1537   Add integration with Yarn's Application Timeline Server
+  SPARK-11315  Add YARN extension service to publish Spark events to YARN timeline service (part of SPARK-1537)
+  SPARK-11323  Add History Service Provider to service application histories from YARN timeline server (part of SPARK-1537)
+  SPARK-6717   Clear shuffle files after checkpointing in ALS
+  SPARK-12967  NettyRPC races with SparkContext.stop() and throws exception
+
+BUG FIXES
+
+  BUG-57104. spark.files in properties file is not distributed to driver in yarn-cluster mode
+  BUG-48230. yarn-client app hangs on shutdown
+  BUG-47809. Application gets stuck with scala.MatchError
+  BUG-47316. spark.history.provider isn't resolving to the history provider class: reinstate original classes as subclasses of the moved ones
+  BUG-56950. Update to Kafka HDP version
+  BUG-57236. Update HttpClient Dependencies
+  BUG-59418. changes to KafkaRDD MessageAndMetadata to use named params.
+  BUG-57586. Add plugin jar to hdpLib for rpm
+  BUG-60859. Fix Spark Streaming Kafka unit test issue
+  BUG-57104. (SPARK-14845) spark.files in properties file is not distributed to driver in yarn-cluster mode
+  (Spark 2.0 backport)
+  SPARK-6847    Stack overflow on updateStateByKey which followed by a stream with checkpoint set
+  SPARK-10582   using dynamic-executor-allocation, if AM failed, the new AM will be started. But the new AM does not allocate executors to driver
+  SPARK-11137   Make StreamingContext.stop() exception-safe
+  SPARK-11627   Spark Streaming backpressure mechanism has no initial rate limit, receivers receive data at the maximum speed , it might cause OOM exception
+  SPARK-12001   StreamingContext cannot be completely stopped if the stop() is interrupted
+  SPARK-12009   Avoid re-allocate yarn container while driver want to stop all executors
+  SPARK-12142   Can't request executor when container allocator us bit ready
+  SPARK-12353   wrong output for countByValue and countByValueAndWIndow
+  SPARK-12513   SocketReceiver hang in Netcat example
+  SPARK-13021   Fail fast when custom RDD's violate RDD.partition's API contract
+  SPARK-13117   WebUI should use the local ip not 0.0.0.0
+  SPARK-13308   ManagedBuffers passed to OneToOneStreamManager need to be freed in non error cases
+  SPARK-13468   Fix a corner case where the page UI should show DAG but it doesn't show
+  SPARK-13360   pyspark related enviroment variable is not propagated to driver in yarn-cluster mode
+  SPARK-13478   Use real user when fetching delegation tokens
+  SPARK-12523   Support long-running of the Spark on HBase and hive metastore
+  SPARK-12241   Improve failure reporting in Yarn client obtainTokenForHBase()
+  SPARK-13885   Fix attempt id regression for Spark running on Yarn
+  SPARK-14062   Fix log4j and upload metrics.properties automatically with distributed cache
+  SPARK-11182   HDFS Delegation Token will be expired when calling "UserGroupInformation.getCurrentUser.addCredentials" in HA mode
+  SPARK-7889    Jobs progress of apps on complete page of HistoryServer shows uncompleted
+  SPARK-15067   YARN executors are launched with fixed perm gen size
+  SPARK-13278   Launcher fails to start with JDK 9 EA
+  SPARK-13902   Make DAGScheduler not to create duplicate stage
+  SPARK-6005    Flaky test: o.a.s.streaming.kafka.DirectKafkaStreamSuite.offset recovery
+  SPARK-15606   Driver hang in o.a.s.DistributedSuite on 2 core machine
+  SPARK-16214   fix the denominator of SparkPi
+  SPARK-16077   Python UDF may fail because of six
+  SPARK-16193   Address flaky ExternalAppendOnlyMapSuite spilling tests
+  SPARK-6735    Add window based executor failure tracking mechanism for long running service
+  (Spark 2.1 backport)
+  SPARK-15990   Add rolling log aggregation support for Spark on yarn
+  SPARK-16110   Can't set Python via spark-submit for YARN cluster mode when PYSPARK_PYTHON & PYSPARK_DRIVER_PYTHON are set
+  (Jira in Apache Spark is IN PROGRESS)
+  SPARK-15844   HistoryServer doesn't come up if spark.authenticate = true
+  SPARK-7481    Add spark-cloud module to pull in aws+azure object store FS accessors; test integration
