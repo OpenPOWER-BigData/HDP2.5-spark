@@ -2178,6 +2178,10 @@
               <goals>
                 <goal>test</goal>
               </goals>
+              <configuration>
+                <!-- Ignore MySQLIntegrationSuite.scala from Docker Integration since it downloads x86 specific image -->
+                <wildcardSuites>!MySQLIntegrationSuite</wildcardSuites>
+              </configuration>
             </execution>
           </executions>
         </plugin>
